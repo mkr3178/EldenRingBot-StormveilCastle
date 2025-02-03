@@ -11,7 +11,7 @@ from logging.handlers import RotatingFileHandler
 import os
 
 
-class ElapsedFilter(logging.Filter):
+class ElapsedFilter(logging.Filter): # inspired from the following post: https://stackoverflow.com/questions/25194864/python-logging-time-since-start-of-program
     def __init__(self):
         self.start_time = time.time()
 
@@ -74,7 +74,7 @@ def press_key(s):
     time.sleep(0.2)
 
 
-def Check_surroundings_pics(png, confidence = 0.8, custom_prompt = "") -> bool:
+def Check_surroundings_pics(png, confidence = 0.8, custom_prompt = "") -> bool: # 99% of this function was made by ChatGPT
     # Load the template image
     new_png = f"Templates\\{png}"
     template = cv2.imread(new_png, cv2.IMREAD_UNCHANGED)
@@ -122,7 +122,7 @@ def right_click(t = 0.3):
     time.sleep(t)
     win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)  # Left button up
 
-def check_fp_bar():
+def check_fp_bar() -> bool: # 99% of this function was made by ChatGPT
     with mss.mss() as sct:
         fp_region = {"left": 310, "top": 131, "width": 200, "height": 20}  # Adjust coordinates
         screenshot = sct.grab(fp_region)
